@@ -17,32 +17,18 @@ urllib3.disable_warnings()
 DNAC_URL = "https://"
 DNAC_USER = ""
 DNAC_PASS = ""
-TEMPLATE_NAME = ""          # Navn på eksisterende template (den der omdøbes)
+TEMPLATE_NAME = "JinjaPlain_1749633521"          # Navn på eksisterende template (den der omdøbes)
 NEW_TEMPLATE_NAME = ""    # Navn på NY template, der oprettes med script-output
 VERIFY_SSL = False
 # ------------------------------------------------------------
 
 # ----------- BRUGERNAVN OG PASSWORD HER ----------- #
-SSH_USERNAME = ""
-SSH_PASSWORD = ""
+SSH_USERNAME = "ShowScript"
+SSH_PASSWORD = "Show123123"
 # -------------------------------------------------- #
 
 SUBNETS = [
-    ("Node01", ipaddress.IPv4Network('xxx.xx.16.0/20')),
-    ("Node02", ipaddress.IPv4Network('xxx.xx.32.0/20')),
-    ("Node03", ipaddress.IPv4Network('xxx.xx.48.0/20')),
-    ("Node04", ipaddress.IPv4Network('xxx.xx.64.0/20')),
-    ("Node05", ipaddress.IPv4Network('xxx.xx.80.0/20')),
-    ("Node06", ipaddress.IPv4Network('xxx.xx.96.0/20')),
-    ("Node07", ipaddress.IPv4Network('xxx.xx.112.0/20')),
-    ("Node08", ipaddress.IPv4Network('xxx.xx.128.0/20')),
-    ("Node09", ipaddress.IPv4Network('xxx.xx.144.0/20')),
-    ("Node10", ipaddress.IPv4Network('xxx.xx.160.0/20')),
-    ("Node11", ipaddress.IPv4Network('xxx.xx.176.0/20')),
-    ("Node12", ipaddress.IPv4Network('xxx.xx.192.0/20')),
-    ("Node13", ipaddress.IPv4Network('xxx.xx.208.0/20')),
-    ("Node14", ipaddress.IPv4Network('xxx.xx.224.0/20')),
-    ("Node15", ipaddress.IPv4Network('xxx.xx.240.0/20')),
+    
 ]
 output_root = r"C:\LINUX\LOKATIONER\DNA"
 os.makedirs(output_root, exist_ok=True)
@@ -56,165 +42,7 @@ SPING_SCRIPT = "sping.py"
 SPING_IP_TXT = "ip.txt"
 
 PORT_MODEL_MAP = {
-    "WS-C3560CX-8PC-S": [
-        ("GigabitEthernet0/9", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet0/10", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet0/11", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/12", "TenGigabitEthernet1/1/4"),
-        (r"GigabitEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C3560CX-12PC-S": [
-        ("GigabitEthernet0/13", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet0/14", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet0/15", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/16", "TenGigabitEthernet1/1/4"),
-        (r"GigabitEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960C-12PC-L": [
-        ("GigabitEthernet0/1", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "TenGigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960S-F24PS-L": [
-        ("GigabitEthernet1/0/1", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet1/0/2", "GigabitEthernet1/1/2"),
-        (r"FastEthernet1/0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960C-8PC-L": [
-        ("GigabitEthernet0/1", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "TenGigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960CX-8PC-L": [
-        ("GigabitEthernet0/9", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet0/10", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet0/11", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/12", "TenGigabitEthernet1/1/4"),
-        (r"GigabitEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960-24TC-L": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960X-24PS-L": [
-        ("GigabitEthernet1/0/25", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet1/0/26", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet1/0/27", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet1/0/28", "GigabitEthernet1/1/4"),
-    ],
-    "WS-C2960X-48LPS-L": [
-        ("GigabitEthernet1/0/49", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet1/0/50", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet1/0/51", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet1/0/52", "GigabitEthernet1/1/4"),
-    ],
-    "WS-C2960-24PC-L": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C3550-24-FX-SMI": [
-        ("GigabitEthernet0/1", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "TenGigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960-48TC-L": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960-48PST-L": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet0/3", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/4", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960S-F48LPS-L": [
-        ("GigabitEthernet1/0/1", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet1/0/2", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet1/0/3", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet1/0/4", "GigabitEthernet1/1/4"),
-        (r"FastEthernet1/0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960-8TC-L": [
-        ("GigabitEthernet0/1", "TenGigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C3560V2-48TS-S": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet0/3", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/4", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960-24TC-S": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960-48TC-S": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2960-8TC-S": [
-        ("GigabitEthernet0/1", "TenGigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C3560-8PC-S": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C3560CG-8PC-S": [
-        ("GigabitEthernet0/9", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/10", "TenGigabitEthernet1/1/4"),
-        (r"GigabitEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2950C-24L": [
-        ("FastEthernet0/25", "GigabitEthernet1/1/3"),
-        ("FastEthernet0/26", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C2950SX-24": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C3750-24FS-S": [
-        ("GigabitEthernet1/0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet1/0/2", "GigabitEthernet1/1/4"),
-        ("GigabitEthernet2/0/1", "GigabitEthernet2/1/3"),
-        ("GigabitEthernet2/0/2", "GigabitEthernet2/1/4"),
-        (r"FastEthernet1/0/", "GigabitEthernet1/0/"),
-        (r"FastEthernet2/0/", "GigabitEthernet2/0/"),
-    ],
-    "WS-C2950SX-48-SI": [
-        ("GigabitEthernet0/1", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet0/2", "GigabitEthernet1/1/4"),
-        (r"FastEthernet0/", "GigabitEthernet1/0/"),
-    ],
-    "WS-C3750G-24TS-S": [
-        ("GigabitEthernet1/0/25", "GigabitEthernet1/1/1"),
-        ("GigabitEthernet1/0/26", "GigabitEthernet1/1/2"),
-        ("GigabitEthernet1/0/27", "GigabitEthernet1/1/3"),
-        ("GigabitEthernet1/0/28", "GigabitEthernet1/1/4"),
-    ],
-    "WS-C3750X-24T-S": [
-        (r"GigabitEthernet1/0/", "GigabitEthernet1/0/"),
-        (r"GigabitEthernet2/0/", "GigabitEthernet2/0/"),
-        ("GigabitEthernet1/1/", "GigabitEthernet1/1/"),
-        ("GigabitEthernet2/1/", "GigabitEthernet2/1/"),
-        (r"TenGigabitEthernet1/1/", "TenGigabitEthernet1/1/"),
-        (r"TenGigabitEthernet2/1/", "TenGigabitEthernet2/1/"),
-    ],
-    "WS-C2960CG-8TC-L": [
-        ("GigabitEthernet0/9", "TenGigabitEthernet1/1/3"),
-        ("GigabitEthernet0/10", "TenGigabitEthernet1/1/4"),
-        (r"GigabitEthernet0/", "GigabitEthernet1/0/"),
-    ],
+   
 }
 
 class DNACAuth:
@@ -284,9 +112,6 @@ def commit_template(dnac: DNACAuth, template_id, comments="Commit via script"):
     }
     endpoint = f"/dna/intent/api/v1/templates/{template_id}/versions/commit?force=true"
     resp = dnac.request("POST", endpoint, json=data)
-    print("POST endpoint:", endpoint)
-    print("Status:", resp.status_code)
-    print("Response:", resp.text)
     if resp.status_code not in (200, 202):
         print("FEJL ved commit:", resp.status_code, resp.text)
         return None
@@ -301,7 +126,6 @@ def commit_template(dnac: DNACAuth, template_id, comments="Commit via script"):
         task_resp = dnac.request("GET", task_endpoint)
         task_json = task_resp.json()["response"]
         progress = str(task_json.get("progress", ""))
-        print(f"Task poll [{i+1}]: {progress}")
         if task_json.get("isError"):
             print("FEJL ved commit-task:", progress)
             return None
@@ -350,7 +174,6 @@ def update_hostnames_txt(ip, hostname):
         for l in lines:
             if l.strip():
                 f.write(l + "\n")
-
 def update_hostnames_txt_dna(ip, macro_name):
     dna_output_folder = os.path.join(output_root, "DNA")
     os.makedirs(dna_output_folder, exist_ok=True)
@@ -464,6 +287,7 @@ def read_until_prompt(shell, prompt, timeout=10):
         if prompt in buffer:
             break
     return buffer
+
 def get_config(ip, username, password, match_models):
     try:
         client = paramiko.SSHClient()
@@ -739,7 +563,6 @@ def sping_serial_dna(input_file, match_models, sping_script="sping.py", sping_ou
             output_box.insert("end", f"\nFEJL i batch-commit: {e}\n")
             output_box.update()
     return all_failed
-
 def do_ping_one_ip():
     stop_batch_flag.clear()
     the_ip = ip_entry.get().strip()
@@ -897,4 +720,4 @@ for i, model in enumerate(MATCH_MODELS_DEFAULT):
 text_area = scrolledtext.ScrolledText(root, height=38, width=90, font=label_font, state="disabled", wrap="word")
 text_area.grid(row=2, column=0, columnspan=2, padx=8, pady=10, sticky="w")
 
-root.mainloop()
+root.mainloop()	
