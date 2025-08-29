@@ -23,8 +23,8 @@ VERIFY_SSL = False
 # ------------------------------------------------------------
 
 # ----------- BRUGERNAVN OG PASSWORD HER ----------- #
-SSH_USERNAME = "ShowScript"
-SSH_PASSWORD = "Show123123"
+SSH_USERNAME = ""
+SSH_PASSWORD = ""
 # -------------------------------------------------- #
 
 SUBNETS = [
